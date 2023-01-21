@@ -1,0 +1,13 @@
+.main {
+    width: 1200px;
+    height: 200px;
+    /* border: 1px solid #ea2c2c; */
+    display: flex;
+    flex-wrap: wrap;
+  }
+.org{
+
+        width: 500px;
+        height: 100px;
+      
+}
