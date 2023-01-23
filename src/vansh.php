@@ -10,6 +10,8 @@ if (isset($_GET['type'])) {
 } else {
   $p_id = "";
 }
+session_start();
+
 ?>
 
 <head>
@@ -25,6 +27,8 @@ if (isset($_GET['type'])) {
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 
 <body>
@@ -33,9 +37,16 @@ if (isset($_GET['type'])) {
     <a href="https://twitter.com/Easyfunds77" class="fa fa-twitter text-white px-4 hover:text-slate-500 cursor-pointer"></a>
     <a href="https://instagram.com/easyfunds77?igshid=YmMyMTA2M2Y=" class="fa fa-instagram text-white px-4 hover:text-slate-500 cursor-pointer"></a>
     <a href="https://www.youtube.com/channel/UCAljPe31iDPTyZTYqjZr01Q" class="fa fa-youtube text-white px-4 hover:text-slate-500 cursor-pointer"></a>
-    <a href="login_form.php" class="float-right px-4 text-white hover:text-black">login</a>
-    <a class="float-right text-white">|</a>
-    <a href="type.php" class="float-right px-4 text-white hover:text-black">register</a>
+    <?php if (!isset($_SESSION['type'])) {
+    ?> <a href="login_form.php" class="float-right px-4 text-white hover:text-black">login</a>
+      <a class="float-right text-white">|</a>
+      <a href="type.php" class="float-right px-4 text-white hover:text-black">register</a>
+    <?php
+    } else { ?>
+      <a href="logout.php" class="float-right px-4 text-white hover:text-black">logout</a>
+    <?php
+    }
+    ?>
   </div>
   <div class="pt-10 flex">
     <img src="img-2.png" alt="logo" class="h-24 pl-10">
@@ -54,10 +65,16 @@ if (isset($_GET['type'])) {
     <?php if ($p_id == 2)
       echo "<a href='addProject.php'>ADD PROJECTS</a>";
     ?>
+    <a href="invest.php">INVEST</a>
     <a href="topFundedProjects.php">TOP FUNDED PROJECTS</a>
     <a href="meet_experts.php">MEET EXPERTS</a>
-    <a href="#news">MORE INFORMATION</a>
-    <a href="">CONTACT US</a>
+    <a href="moreinfo.php">MORE INFORMATION</a>
+    <?php
+    if (isset($_SESSION['type'])) {
+      echo "<a href='profile.php'>MY PROFILE</a>";
+    }
+    ?>
+    <a href="contactus.php">CONTACT US</a>
   </div>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -98,6 +115,13 @@ if (isset($_GET['type'])) {
     <p class="para ">Entrepreneurs play a key role in any economy, using the skills and initiative necessary to anticipate needs and bring good new ideas to market. Entrepreneurship that proves to be successful in taking on the risks of creating a startup is rewarded with profits, fame, and continued growth opportunities. Entrepreneurship that fails results in losses and less prevalence in the markets for those involved.</p>
 
   </div>
+  <div class="flex">
+    <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+    </iframe>
+    <p class=" para ">&nbsp; Still, the future is full of hope as our young population enables many to become pioneers in their areas of interest, not only in India but &nbsp; also in the entire world. Entrepreneurs play a key role in any economy, using the skills and initiative necessary to anticipate needs and &nbsp; &nbsp; bring good new ideas to market. Entrepreneurship that proves to be successful in taking on the risks of creating a startup is rewarded &nbsp; with profits, fame, and continued growth opportunities </p>
+
+
+  </div>
   <div class="container my-5">
     <footer class="text-center text-lg-start text-white" style="background-color: red">
       <div class="container p-4 pb-0">
@@ -115,16 +139,16 @@ if (isset($_GET['type'])) {
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
               <p>
-                <a class="text-white">TOP INVESTORS</a>
+                <a href="topInvestors.php" text-white">TOP INVESTORS</a>
               </p>
               <p>
                 <a href="topFundedProjects.php" class="text-white">TOP FUNDED PROJECTS</a>
               </p>
               <p>
-                <a class="text-white">MEET EXPERTS</a>
+                <a href="meet_experts.php" class="text-white">MEET EXPERTS</a>
               </p>
               <p>
-                <a class="text-white">CONTACT US</a>
+                <a href="contactus.php" class="text-white">CONTACT US</a>
               </p>
             </div>
             <!-- Grid column -->
@@ -137,16 +161,14 @@ if (isset($_GET['type'])) {
                 Useful links
               </h6>
               <p>
-                <a class="text-white">Your Account</a>
+                <a href="profile.php" text-white">Your Account</a>
+              </p>
+
+              <p>
+                <a href="type.php" text-white">new registration</a>
               </p>
               <p>
-                <a class="text-white">Become an expert</a>
-              </p>
-              <p>
-                <a class="text-white">new registration</a>
-              </p>
-              <p>
-                <a class="text-white">Help</a>
+                <a href="contactus.php" class="text-white">Help</a>
               </p>
             </div>
 
@@ -177,7 +199,7 @@ if (isset($_GET['type'])) {
               <!-- Copyright -->
               <div class="p-3">
                 © 2020 Copyright:
-                <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                <a class="text-white" href="https://mdbootstrap.com/">easyfunds.com</a>
               </div>
               <!-- Copyright -->
             </div>

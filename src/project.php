@@ -86,27 +86,32 @@ if (isset($_GET['hint'])) {
 
         <div class="flex-wrap main">
             <?php
-            $query = "SELECT * FROM projects WHERE project_name LIKE '%$hint%' ";
+            $query = "SELECT * FROM projects WHERE project_name LIKE '%$hint%'";
             $select_posts = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($select_posts)) {
                 $project_id = $row['project_id'];
                 $project_name = $row['project_name'];
                 $project_type = $row['project_type'];
                 $project_descript = $row['project_descript'];
+                $project_image = $row['project_image'];
+                $project_user = $row['project_user'];
+                $user_email = $row['user_email'];
 
             ?>
                 <div class=" org max-w-sm rounded overflow-hidden shadow-lg px-16 bg-red-600 text-white mx-5 my-3">
-                    <!-- <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> -->
+                    <?php echo  "<img src=" . $project_image . ' class="my-3 rounded" width=100px height="100px">'; ?>
+                    <div class="font-bold text-xl mb-2"><?php echo "{$project_name}"; ?></div>
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2"><?php echo "{$project_name}"; ?></div>
-                        <p class="text-gray-700 text-base">
+                        <p class="text-w text-base">
                             <?php echo "{$project_descript}"; ?>
                         </p>
                     </div>
+                    <div class="font-bold text-xl mb-2"><?php echo "{$project_user}"; ?></div>
+                    <div class="font-bold text-xl mb-2"><?php echo "{$user_email}"; ?></div>
                     <div class="px-6 pt-4 pb-2">
-                        <span class="inline-block bg-white hover:bg-slate-400 hover:text-black text-slate-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                        <span class="inline-block bg-white hover:bg-slate-400 hover:text-black text-slate-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                        <span class="inline-block bg-white hover:bg-slate-400 hover:text-black text-slate-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                        <span class="inline-block bg-white hover:bg-slate-400 hover:text-black text-slate-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><button id="rzp-button1">Invest</button>
+                        </span>
+                        <span class="inline-block bg-white hover:bg-slate-400 hover:text-black text-slate-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Detail</span>
                     </div>
                 </div>
 

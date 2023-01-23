@@ -1,3 +1,4 @@
+<?php include "config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +69,34 @@
         <a href="#news">MORE INFORMATION</a>
         <a href="">CONTACT US</a>
     </div>
+
+    <div class="flex-wrap main">
+        <?php
+        $query = "SELECT * FROM experts";
+        $select_posts = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_assoc($select_posts)) {
+            $exp_name = $row['exp_name'];
+            $name = $row['name'];
+            $exp_email = $row['exp_email'];
+            $exp_details = $row['exp_details'];
+
+        ?>
+            <div class=" org max-w-sm rounded overflow-hidden shadow-lg px-16 bg-red-600 text-white mx-5 my-3">
+                <!-- <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> -->
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2"><?php echo "{$exp_name}"; ?></div>
+                    <div class="font-bold text-xl mb-2"><?php echo "{$name}"; ?></div>
+                    <div class="font-bold text-xl mb-2"><?php echo "{$exp_email}"; ?></div>
+                    <p class="text-w text-base">
+                        <?php echo "{$exp_details}"; ?>
+                    </p>
+
+                </div>
+
+            </div>
+
+        <?php
+        } ?>
 </body>
 
 </html>

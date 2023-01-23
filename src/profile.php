@@ -1,5 +1,8 @@
+<?php include "config.php"; ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -17,6 +20,7 @@
 
 </head>
 
+
 <body>
     <div class="bg-red-600">
         <a class="pl-20 text-white"> customer care: 7906548043 | follow us on social media</a>
@@ -26,29 +30,60 @@
         <a href="#" class="fa fa-youtube text-white px-4 hover:text-slate-500 cursor-pointer"></a>
     </div>
     <div class="navbar">
-        <a href="#news">TOP FUNDED PROJECTS</a>
-        <a href="#news">MEET EXPERTS</a>
-        <a href="#news">MORE INFORMATION</a>
-        <a href="">CONTACT US</a>
+        <a href="vansh.php">HOME</a>
+        <a href="topfundedprojects.php">TOP FUNDED PROJECTS</a>
+        <a href="meet_experts.php">MEET EXPERTS</a>
+        <a href="moreinfo.php">MORE INFORMATION</a>
+        <a href="contactus.php">CONTACT US</a>
     </div>
-    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-red-600 my-10 text-white ml-48 ">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">name</div>
-            <div class="font-bold text-xl mb-2">username</div>
-            <p class="text-white text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-            <span class="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-black hover:bg-slate-500 hover:text-black mr-2 mb-2">#winter</span>
-            <span class="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-black hover:bg-slate-500 hover:text-black mr-2 mb-2">#winter</span>
-            <span class="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-black hover:bg-slate-500 hover:text-black mr-2 mb-2">#winter</span>
-        </div>
-    </div>
-    <div class="navbar">
-        <a href="">MY PROJECTS</a>
-    </div>
+    <?php
+    if (isset($_SESSION['type'])) {
+        $type = $_SESSION['type'];
+        $email = $_SESSION['email'];
+        if ($type == 'investor') {
+            $query = "SELECT * FROM investors WHERE inv_email = '$email'";
+            $run = mysqli_query($conn, $query);
+        } else if ($type == 'expert') {
+            $query = "SELECT * FROM experts WHERE exp_email='$email'";
+            $run = mysqli_query($conn, $query);
+        } else {
+            $query = "SELECT * FROM enterpreneur WHERE entrp_email='$email'";
+            $run = mysqli_query($conn, $query);
+        }
+        while ($row = mysqli_fetch_array($run)) {
+            if ($type == 'investor') {
+                $user_name = $row['inv_name'];
+            } else if ($type = 'experts') {
+                $user_name = $row['exp_name'];
+            } else {
+                $user_name = $row['entrp_name'];
+            }
+            $name = $row['name'];
+        }
+    ?>
+        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-red-600 my-10 text-white ml-48 ">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2"><?php echo "$user_name"; ?></div>
+                <div class="font-bold text-xl mb-2"><?php echo "$name"; ?></div>
+                <div class="font-bold text-xl mb-2"><?php echo "$email"; ?></div>
+                <p class="text-white text-base">
+                    Funding is the act of providing resources to finance a need, program, or project. While this is usually in the form of money, it can also take the form of effort or time from an organization or company.
+                </p>
+            </div>
 
+        </div>
+    <?php
+    } else {
+        header("Location: vansh.php");
+    }
+    if ($type == 'enterpreneur') {
+    ?>
+        <div class="navbar">
+            <a href="">MY PROJECTS</a>
+        </div>
+    <?php
+    }
+    ?>
 </body>
 
 </html>

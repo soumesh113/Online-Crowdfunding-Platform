@@ -19,7 +19,24 @@ if (isset($_POST['add'])) {
     $project_type = $_POST['category'];
     $project_descript = $_POST['descript'];
 
-    $query = " INSERT INTO projects(project_name,project_type,project_descript) VALUES('{$project_name}','$project_type','{$project_descript}') ";
+    $project_image = $_FILES["image"]["name"];
+    $project_image_temp = $_FILES["image"]["tmp_name"];
+
+
+    $entrp_email = $_SESSION['email'];
+
+    $the_query = "SELECT * FROM enterpreneur WHERE entrp_email = '$entrp_email'";
+
+    $run = mysqli_query($conn, $the_query);
+
+    $row = mysqli_fetch_array($run);
+
+    $project_user = $row['entrp_name'];
+
+    move_uploaded_file($project_image_temp, "$project_image");
+
+
+    $query = " INSERT INTO projects(project_name,project_type,project_descript,project_image,project_user,user_email) VALUES('{$project_name}','$project_type','{$project_descript}','{$project_image}','{$project_user}','{$entrp_email}') ";
 
     $result = mysqli_query($conn, $query);
     $prev_Id = mysqli_insert_id($conn);
@@ -57,7 +74,7 @@ if (isset($_POST['add'])) {
 
     <div class="form-container">
 
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <h3>Add Project</h3>
             <input type="text" name="name" required placeholder="Project name">
             <select name="category">
@@ -68,6 +85,7 @@ if (isset($_POST['add'])) {
                 <option value="business related">business related</option>
                 <option value="other">other</option>
             </select>
+            <input type="file" name="image">
             <input type="text" size="200px" name="descript" required placeholder="Project Description">
             <input type="submit" name="add" value="Add" class="form-btn">
             <p> <a href="vansh.php">Close</a></p>

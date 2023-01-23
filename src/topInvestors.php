@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
         <a href="#news">MORE INFORMATION</a>
         <a href="">CONTACT US</a>
     </div>
-
+    <div><img src="j1.jpg" class="my-5 mx-5 rounded-3xl"></div>
     <form class="example" action="" method="post">
         <input type="text" placeholder="Search Project.." name="search">
         <button type="submit" name="submit"><i class="fa fa-search"></i></button>
@@ -123,6 +123,112 @@ if (isset($_POST['submit'])) {
 
             <?php
             } ?>
+            <div class="container my-5">
+                <footer class="text-center text-lg-start text-white" style="background-color: red">
+                    <div class="container p-4 pb-0">
+                        <section class="">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                                        easyfunds.com
+                                    </h6>
+                                    <p>
+                                        easyfunds.com gives power to brillent minds to change ideas into reality
+                                    </p>
+                                </div>
+                                <hr class="w-100 clearfix d-md-none" />
+                                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
+                                    <p>
+                                        <a href="topInvestors.php" text-white">TOP INVESTORS</a>
+                                    </p>
+                                    <p>
+                                        <a href="topFundedProjects.php" class="text-white">TOP FUNDED PROJECTS</a>
+                                    </p>
+                                    <p>
+                                        <a href="meet_experts.php" class="text-white">MEET EXPERTS</a>
+                                    </p>
+                                    <p>
+                                        <a href="contactus.php" class="text-white">CONTACT US</a>
+                                    </p>
+                                </div>
+                                <!-- Grid column -->
+
+                                <hr class="w-100 clearfix d-md-none" />
+
+                                <!-- Grid column -->
+                                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                                        Useful links
+                                    </h6>
+                                    <p>
+                                        <a href="profile.php" text-white">Your Account</a>
+                                    </p>
+
+                                    <p>
+                                        <a href="type.php" text-white">new registration</a>
+                                    </p>
+                                    <p>
+                                        <a href="contactus.php" class="text-white">Help</a>
+                                    </p>
+                                </div>
+
+                                <!-- Grid column -->
+                                <hr class="w-100 clearfix d-md-none" />
+
+                                <!-- Grid column -->
+                                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                                    <p><i class="fas fa-home mr-3"></i> NIT KURUKSHETRA</p>
+                                    <p><i class="fas fa-envelope mr-3"></i> fundeasy@gmail.com</p>
+                                    <p><i class="fas fa-phone mr-3"></i> + 91 9876543210</p>
+                                    <p><i class="fas fa-print mr-3"></i> + 91 7906548043</p>
+                                </div>
+                                <!-- Grid column -->
+                            </div>
+                            <!--Grid row-->
+                        </section>
+                        <!-- Section: Links -->
+
+                        <hr class="my-3">
+
+                        <!-- Section: Copyright -->
+                        <section class="p-3 pt-0">
+                            <div class="row d-flex align-items-center">
+                                <!-- Grid column -->
+                                <div class="col-md-7 col-lg-8 text-center text-md-start">
+                                    <!-- Copyright -->
+                                    <div class="p-3">
+                                        © 2020 Copyright:
+                                        <a class="text-white" href="https://mdbootstrap.com/">easyfunds.com</a>
+                                    </div>
+                                    <!-- Copyright -->
+                                </div>
+                                <!-- Grid column -->
+
+                                <!-- Grid column -->
+                                <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                                    <!-- Facebook -->
+                                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i class="fab fa-facebook-f"></i></a>
+
+                                    <!-- Twitter -->
+                                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i class="fab fa-twitter"></i></a>
+
+                                    <!-- Google -->
+                                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i class="fab fa-google"></i></a>
+
+                                    <!-- Instagram -->
+                                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i class="fab fa-instagram"></i></a>
+                                </div>
+                                <!-- Grid column -->
+                            </div>
+                        </section>
+                        <!-- Section: Copyright -->
+                    </div>
+                    <!-- Grid container -->
+                </footer>
+                <!-- Footer -->
+            </div>
         </div>
 
 

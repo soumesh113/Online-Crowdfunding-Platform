@@ -37,15 +37,18 @@ if (isset($_POST['submit'])) {
          header("Location: vansh.php");
       } else if ($type == 'investor') {
 
-         $_SESSION['user_name'] = $row['inv_name'];
-         header("Location: vansh.php");
+         $_SESSION['type'] = 'investor';
+         $_SESSION['email'] = $email;
+         header("Location: vansh.php?p_id=1");
       } else if ($type == 'enterpreneur') {
 
-         $_SESSION['user_name'] = $row['entrp_name'];
+         $_SESSION['type'] = 'enterpreneur';
+         $_SESSION['email'] = $email;
          header("Location: vansh.php?p_id=2");
       } else {
-         $_SESSION['user_name'] = $row['exp_name'];
-         header("Location: vansh.php");
+         $_SESSION['type'] = 'expert';
+         $_SESSION['email'] = $email;
+         header("Location: vansh.php?p_id=3");
       }
    } else {
       header("Location: vansh.php");
